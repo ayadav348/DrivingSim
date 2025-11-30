@@ -26,10 +26,6 @@ size = Vector2(5, 5)
 
 [node name="Node3D" type="Node3D"]
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.395, 1.946, -7.799)
-current = true
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1bvp3")
 
@@ -48,6 +44,10 @@ skeleton = NodePath("../..")
 
 [node name="car" parent="." instance=ExtResource("1_ig7tw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.88136864, -7.9740505)
+
+[node name="InsideCamera" type="Camera3D" parent="car"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.395, 1, 0.175)
+current = true
 
 [node name="RoadManager" type="Node3D" parent="."]
 script = ExtResource("2_1bvp3")
