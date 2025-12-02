@@ -15,7 +15,7 @@ points = PackedVector3Array(6, 0, 250, -6, 0, 250, 6, 0, -250, -6, 0, -250)
 [node name="tunnel" type="Node3D"]
 
 [node name="RightWall" type="StaticBody3D" parent="."]
-transform = Transform3D(-4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0, 0, 0, 1, 6.595, 2.7, -250)
+transform = Transform3D(-4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0, 0, 0, 1, 6, 2.5, -250)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RightWall"]
 mesh = SubResource("PlaneMesh_8jqgr")
@@ -25,7 +25,7 @@ skeleton = NodePath("../..")
 shape = SubResource("ConvexPolygonShape3D_firpc")
 
 [node name="LeftWall" type="StaticBody3D" parent="."]
-transform = Transform3D(4.3711385e-08, 0.99999994, -8.742278e-08, 0.99999994, -4.3711385e-08, 0, -3.8213705e-15, -8.742277e-08, -1, -5.595, 2.7, -250)
+transform = Transform3D(4.3711385e-08, 0.99999994, -8.742278e-08, 0.99999994, -4.3711385e-08, 0, -3.8213705e-15, -8.742277e-08, -1, -6, 2.5, -250)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="LeftWall"]
 mesh = SubResource("PlaneMesh_8jqgr")
@@ -35,7 +35,7 @@ skeleton = NodePath("../..")
 shape = SubResource("ConvexPolygonShape3D_firpc")
 
 [node name="Roof" type="StaticBody3D" parent="."]
-transform = Transform3D(0.99999994, -8.742277e-08, 8.742278e-08, -8.742277e-08, -0.99999994, 0, 8.742277e-08, -7.642741e-15, -1, 5.089, 5.111, -250)
+transform = Transform3D(0.99999994, -8.742277e-08, 8.742278e-08, -8.742277e-08, -0.99999994, 0, 8.742277e-08, -7.642741e-15, -1, 4.414, 4.9, -250)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Roof"]
 transform = Transform3D(0.99999994, -6.6814964e-22, 0, -6.6814964e-22, 0.99999994, 0, -7.1054274e-15, 8.4703295e-22, 1, -4.4834175, 4.7683716e-07, 0)

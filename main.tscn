@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://c748n6br57hny"]
+[gd_scene load_steps=16 format=3 uid="uid://c748n6br57hny"]
 
 [ext_resource type="PackedScene" uid="uid://ci52bv1m15cbs" path="res://cars/Doge.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://lv3vos8jhhxl" path="res://addons/road-generator/nodes/road_manager.gd" id="2_1bvp3"]
 [ext_resource type="Script" uid="uid://dsmd1hiy8v2od" path="res://addons/road-generator/nodes/road_container.gd" id="3_lquwl"]
 [ext_resource type="Script" uid="uid://bdkpp56bkb1j7" path="res://addons/road-generator/nodes/road_point.gd" id="4_7mycd"]
 [ext_resource type="Material" uid="uid://dpashsuk5lr4x" path="res://addons/road-generator/resources/road_texture.material" id="4_lquwl"]
+[ext_resource type="PackedScene" uid="uid://bamnxb8xco6dl" path="res://tunnel.tscn" id="6_7mycd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0xm2m"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -70,30 +71,31 @@ metadata/_custom_type_script = "uid://lv3vos8jhhxl"
 script = ExtResource("3_lquwl")
 material_resource = ExtResource("4_lquwl")
 use_lowpoly_preview = true
-edge_containers = Array[NodePath]([NodePath(""), NodePath(""), NodePath("")])
-edge_rp_targets = Array[NodePath]([NodePath(""), NodePath(""), NodePath("")])
-edge_rp_target_dirs = Array[int]([-1, -1, -1])
-edge_rp_locals = Array[NodePath]([NodePath("RP_001"), NodePath("RP_002"), NodePath("RP_002")])
-edge_rp_local_dirs = Array[int]([0, 0, 1])
+edge_containers = Array[NodePath]([NodePath(""), NodePath("")])
+edge_rp_targets = Array[NodePath]([NodePath(""), NodePath("")])
+edge_rp_target_dirs = Array[int]([-1, -1])
+edge_rp_locals = Array[NodePath]([NodePath("RP_001"), NodePath("RP_002")])
+edge_rp_local_dirs = Array[int]([0, 1])
 
 [node name="RP_001" type="Node3D" parent="RoadManager/Road_001"]
-transform = Transform3D(0.9999554, -1.0158808e-10, -0.009442335, 0, 1, -1.0758788e-08, 0.009442335, 1.0758308e-08, 0.9999554, 0, 0, 0)
+transform = Transform3D(0.9999999, -1.03949106e-10, -0.00051242905, 9.6075196e-11, 1, -1.5365881e-08, 0.00051242905, 1.536583e-08, 0.9999999, 0, 0, 0)
 script = ExtResource("4_7mycd")
 traffic_dir = Array[int]([2, 1])
 lanes = Array[int]([5, 5])
-next_mag = 66.48108
+next_mag = 248.25764
 prior_pt_init = NodePath("../RP_002")
 
 [node name="RP_002" type="Node3D" parent="RoadManager/Road_001"]
-transform = Transform3D(0.9999554, 1.8447381e-05, -0.009442318, 0, 0.9999981, 0.0019536882, 0.009442336, -0.0019536011, 0.9999535, 0, 0, -500)
+transform = Transform3D(0.9999999, 2.605334e-07, -0.00051242893, 9.60752e-11, 0.9999999, 0.00050861575, 0.000512429, -0.0005086157, 0.99999976, 0, 0, -500)
 script = ExtResource("4_7mycd")
 traffic_dir = Array[int]([2, 1])
 lanes = Array[int]([5, 5])
-prior_mag = 174.6844
-next_mag = 66.48108
+prior_mag = 248.25764
+next_mag = 248.25764
+next_pt_init = NodePath("../RP_001")
 
 [node name="RightWall" type="StaticBody3D" parent="."]
-transform = Transform3D(-4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0, 0, 0, 1, 6.595, 2.7, -250)
+transform = Transform3D(-4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0, 0, 0, 1, 141.84445, 2.7, -250)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RightWall"]
 mesh = SubResource("PlaneMesh_272bh")
@@ -103,7 +105,7 @@ skeleton = NodePath("../..")
 shape = SubResource("ConvexPolygonShape3D_7mycd")
 
 [node name="LeftWall" type="StaticBody3D" parent="."]
-transform = Transform3D(4.3711385e-08, 0.99999994, -8.742278e-08, 0.99999994, -4.3711385e-08, 0, -3.8213705e-15, -8.742277e-08, -1, -5.595, 2.7, -250)
+transform = Transform3D(4.3711385e-08, 0.99999994, -8.742278e-08, 0.99999994, -4.3711385e-08, 0, -3.8213705e-15, -8.742277e-08, -1, 129.65445, 2.7, -250)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="LeftWall"]
 mesh = SubResource("PlaneMesh_272bh")
@@ -113,7 +115,7 @@ skeleton = NodePath("../..")
 shape = SubResource("ConvexPolygonShape3D_7mycd")
 
 [node name="Roof" type="StaticBody3D" parent="."]
-transform = Transform3D(0.99999994, -8.742277e-08, 8.742278e-08, -8.742277e-08, -0.99999994, 0, 8.742277e-08, -7.642741e-15, -1, 4.513553, 4.8358383, -250)
+transform = Transform3D(0.99999994, -8.742277e-08, 8.742278e-08, -8.742277e-08, -0.99999994, 0, 8.742277e-08, -7.642741e-15, -1, 139.763, 4.8358383, -250)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Roof"]
 transform = Transform3D(0.99999994, -6.6814964e-22, 0, -6.6814964e-22, 0.99999994, 0, -7.1054274e-15, 8.4703295e-22, 1, -4.4834175, 4.7683716e-07, 0)
@@ -123,3 +125,5 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Roof"]
 transform = Transform3D(0.99999994, -6.6814964e-22, 0, -6.6814964e-22, 0.99999994, 0, -7.1054274e-15, 8.4703295e-22, 1, -4.4834175, 4.7683716e-07, 0)
 shape = SubResource("ConvexPolygonShape3D_272bh")
+
+[node name="tunnel" parent="." instance=ExtResource("6_7mycd")]
