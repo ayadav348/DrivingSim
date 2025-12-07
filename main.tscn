@@ -40,6 +40,8 @@ points = PackedVector3Array(7.499999, 0, 250, -7.5, 0, 250, 7.499999, 0, -250, -
 
 [node name="Node3D" type="Node3D"]
 
+[node name="tunnel" parent="." instance=ExtResource("6_7mycd")]
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1bvp3")
 
@@ -57,7 +59,7 @@ mesh = SubResource("PlaneMesh_7mycd")
 skeleton = NodePath("../..")
 
 [node name="car" parent="." instance=ExtResource("1_ig7tw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.88136864, -7.9740505)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.071, -7.974)
 
 [node name="InsideCamera" type="Camera3D" parent="car"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.395, 1, 0.175)
@@ -125,5 +127,3 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Roof"]
 transform = Transform3D(0.99999994, -6.6814964e-22, 0, -6.6814964e-22, 0.99999994, 0, -7.1054274e-15, 8.4703295e-22, 1, -4.4834175, 4.7683716e-07, 0)
 shape = SubResource("ConvexPolygonShape3D_272bh")
-
-[node name="tunnel" parent="." instance=ExtResource("6_7mycd")]

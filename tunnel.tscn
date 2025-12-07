@@ -1,38 +1,59 @@
-[gd_scene load_steps=5 format=3 uid="uid://bamnxb8xco6dl"]
+[gd_scene load_steps=12 format=3 uid="uid://bamnxb8xco6dl"]
+
+[ext_resource type="Script" uid="uid://c7nqx8gsf4jgm" path="res://tunnel.gd" id="1_00owb"]
+[ext_resource type="Texture2D" uid="uid://dpgbihnf7b6s1" path="res://WallTexture2.png" id="1_firpc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_00owb"]
+albedo_texture = ExtResource("1_firpc")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_8jqgr"]
-size = Vector2(5, 500)
+size = Vector2(500, 5)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_firpc"]
-points = PackedVector3Array(2.5, 0, 250, -2.5, 0, 250, 2.5, 0, -250, -2.5, 0, -250)
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_hfrff"]
+data = PackedVector3Array(250, 0, 2.5, -250, 0, 2.5, 250, 0, -2.5, -250, 0, 2.5, -250, 0, -2.5, 250, 0, -2.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hfrff"]
+albedo_texture = ExtResource("1_firpc")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ulhbk"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_00owb"]
+material = SubResource("StandardMaterial3D_ulhbk")
 size = Vector2(12, 500)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hfrff"]
 points = PackedVector3Array(6, 0, 250, -6, 0, 250, 6, 0, -250, -6, 0, -250)
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_firpc"]
+size = Vector2(11.5, 4.895)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_00owb"]
+size = Vector3(11.915, 0.155, 4.73)
+
 [node name="tunnel" type="Node3D"]
+script = ExtResource("1_00owb")
 
 [node name="RightWall" type="StaticBody3D" parent="."]
-transform = Transform3D(-4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0, 0, 0, 1, 6, 2.5, -250)
+transform = Transform3D(-4.3711385e-08, -0.99999994, 0, -4.3711385e-08, 1.9106853e-15, -1, 0.99999994, -4.3711385e-08, -4.371139e-08, 6, 2.5, -250)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RightWall"]
+material_override = SubResource("StandardMaterial3D_00owb")
 mesh = SubResource("PlaneMesh_8jqgr")
 skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RightWall"]
-shape = SubResource("ConvexPolygonShape3D_firpc")
+shape = SubResource("ConcavePolygonShape3D_hfrff")
 
 [node name="LeftWall" type="StaticBody3D" parent="."]
-transform = Transform3D(4.3711385e-08, 0.99999994, -8.742278e-08, 0.99999994, -4.3711385e-08, 0, -3.8213705e-15, -8.742277e-08, -1, -6, 2.5, -250)
+transform = Transform3D(1.3113414e-07, 0.9999999, -3.8213705e-15, -4.3711385e-08, 1.9106853e-15, -0.9999999, -0.9999999, 1.3113414e-07, 4.3711385e-08, -6, 2.5, -250)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="LeftWall"]
+material_override = SubResource("StandardMaterial3D_hfrff")
 mesh = SubResource("PlaneMesh_8jqgr")
 skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LeftWall"]
-shape = SubResource("ConvexPolygonShape3D_firpc")
+shape = SubResource("ConcavePolygonShape3D_hfrff")
 
 [node name="Roof" type="StaticBody3D" parent="."]
 transform = Transform3D(0.99999994, -8.742277e-08, 8.742278e-08, -8.742277e-08, -0.99999994, 0, 8.742277e-08, -7.642741e-15, -1, 4.414, 4.9, -250)
@@ -45,3 +66,19 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Roof"]
 transform = Transform3D(0.99999994, -6.6814964e-22, 0, -6.6814964e-22, 0.99999994, 0, -7.1054274e-15, 8.4703295e-22, 1, -4.4834175, 4.7683716e-07, 0)
 shape = SubResource("ConvexPolygonShape3D_hfrff")
+
+[node name="Threshold" type="Area3D" parent="."]
+transform = Transform3D(0.99999994, 0, 0, 0, -4.3711385e-08, -1, 0, 0.99999994, -4.371139e-08, 0, 2.5, -250)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Threshold"]
+transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 1, 0, 0, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_00owb")
+mesh = SubResource("PlaneMesh_firpc")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Threshold"]
+transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_00owb")
+
+[connection signal="body_entered" from="Threshold" to="." method="_on_threshold_body_entered"]
