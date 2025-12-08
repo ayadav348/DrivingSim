@@ -1,7 +1,14 @@
 [gd_scene load_steps=12 format=3 uid="uid://bamnxb8xco6dl"]
 
-[ext_resource type="Script" uid="uid://c7nqx8gsf4jgm" path="res://tunnel.gd" id="1_00owb"]
 [ext_resource type="Texture2D" uid="uid://dpgbihnf7b6s1" path="res://WallTexture2.png" id="1_firpc"]
+
+[sub_resource type="GDScript" id="GDScript_firpc"]
+script/source = "extends Node3D
+
+
+func _on_threshold_body_entered(body: Node3D) -> void:
+	pass
+"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_00owb"]
 albedo_texture = ExtResource("1_firpc")
@@ -31,7 +38,7 @@ size = Vector2(11.5, 4.895)
 size = Vector3(11.915, 0.155, 4.73)
 
 [node name="tunnel" type="Node3D"]
-script = ExtResource("1_00owb")
+script = SubResource("GDScript_firpc")
 
 [node name="RightWall" type="StaticBody3D" parent="."]
 transform = Transform3D(-4.3711385e-08, -0.99999994, 0, -4.3711385e-08, 1.9106853e-15, -1, 0.99999994, -4.3711385e-08, -4.371139e-08, 6, 2.5, -250)
@@ -68,7 +75,7 @@ transform = Transform3D(0.99999994, -6.6814964e-22, 0, -6.6814964e-22, 0.9999999
 shape = SubResource("ConvexPolygonShape3D_hfrff")
 
 [node name="Threshold" type="Area3D" parent="."]
-transform = Transform3D(0.99999994, 0, 0, 0, -4.3711385e-08, -1, 0, 0.99999994, -4.371139e-08, 0, 2.5, -250)
+transform = Transform3D(0.99999994, 0, 0, 0, -4.3711385e-08, -1, 0, 0.99999994, -4.371139e-08, 0, 2.5, -496.74536)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Threshold"]
 transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 1, 0, 0, 0)
@@ -80,5 +87,3 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Threshold"]
 transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_00owb")
-
-[connection signal="body_entered" from="Threshold" to="." method="_on_threshold_body_entered"]

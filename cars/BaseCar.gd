@@ -17,8 +17,10 @@ func _physics_process(delta):
 	steer_target *= STEER_LIMIT
 	if Input.is_action_just_pressed("ui_turbo"):
 		$Hud/TurboLabel.set_visible(true)
-		turbo_boost = 342
+		turbo_boost = 342 #picked some random num LMAO
 		$TubroTimer.start()
+		$look/Camera3D.fov = 90
+		$InsideCamera.fov = 90
 	if Input.is_action_just_pressed("ui_end"):
 		if find_child("InsideCamera").is_current():
 			find_child("look").find_child("Camera3D").make_current()
@@ -63,3 +65,5 @@ func traction(speed):
 func _on_tubro_timer_timeout() -> void:
 	turbo_boost = 1
 	$Hud/TurboLabel.set_visible(false)
+	$look/Camera3D.fov = 75
+	$InsideCamera.fov = 95

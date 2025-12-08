@@ -1,5 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://c748n6br57hny"]
+[gd_scene load_steps=17 format=3 uid="uid://c748n6br57hny"]
 
+[ext_resource type="Script" uid="uid://dtm65vumnp0te" path="res://ProceduralGeneration.gd" id="1_272bh"]
 [ext_resource type="PackedScene" uid="uid://ci52bv1m15cbs" path="res://cars/Doge.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://lv3vos8jhhxl" path="res://addons/road-generator/nodes/road_manager.gd" id="2_1bvp3"]
 [ext_resource type="Script" uid="uid://dsmd1hiy8v2od" path="res://addons/road-generator/nodes/road_container.gd" id="3_lquwl"]
@@ -38,7 +39,8 @@ size = Vector2(15, 500)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_272bh"]
 points = PackedVector3Array(7.499999, 0, 250, -7.5, 0, 250, 7.499999, 0, -250, -7.5, 0, -250)
 
-[node name="Node3D" type="Node3D"]
+[node name="Main" type="Node3D"]
+script = ExtResource("1_272bh")
 
 [node name="tunnel" parent="." instance=ExtResource("6_7mycd")]
 
@@ -50,6 +52,7 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.770386, 0, 13.203724)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_lquwl")
