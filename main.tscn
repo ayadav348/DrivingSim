@@ -1,5 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://c748n6br57hny"]
+[gd_scene load_steps=17 format=3 uid="uid://c748n6br57hny"]
 
+[ext_resource type="Script" uid="uid://dtm65vumnp0te" path="res://ProceduralGeneration.gd" id="1_272bh"]
 [ext_resource type="PackedScene" uid="uid://ci52bv1m15cbs" path="res://cars/Doge.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://lv3vos8jhhxl" path="res://addons/road-generator/nodes/road_manager.gd" id="2_1bvp3"]
 [ext_resource type="Script" uid="uid://dsmd1hiy8v2od" path="res://addons/road-generator/nodes/road_container.gd" id="3_lquwl"]
@@ -38,7 +39,11 @@ size = Vector2(15, 500)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_272bh"]
 points = PackedVector3Array(7.499999, 0, 250, -7.5, 0, 250, 7.499999, 0, -250, -7.5, 0, -250)
 
-[node name="Node3D" type="Node3D"]
+[node name="Main" type="Node3D"]
+script = ExtResource("1_272bh")
+
+[node name="tunnel" parent="." instance=ExtResource("6_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -121.00218, 0, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1bvp3")
@@ -48,6 +53,7 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.770386, 0, 13.203724)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_lquwl")
@@ -57,7 +63,7 @@ mesh = SubResource("PlaneMesh_7mycd")
 skeleton = NodePath("../..")
 
 [node name="car" parent="." instance=ExtResource("1_ig7tw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.88136864, -7.9740505)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.071, -7.974)
 
 [node name="InsideCamera" type="Camera3D" parent="car"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.395, 1, 0.175)
@@ -68,6 +74,7 @@ script = ExtResource("2_1bvp3")
 metadata/_custom_type_script = "uid://lv3vos8jhhxl"
 
 [node name="Road_001" type="Node3D" parent="RoadManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -200.23444, 0, 0)
 script = ExtResource("3_lquwl")
 material_resource = ExtResource("4_lquwl")
 use_lowpoly_preview = true
@@ -125,5 +132,3 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Roof"]
 transform = Transform3D(0.99999994, -6.6814964e-22, 0, -6.6814964e-22, 0.99999994, 0, -7.1054274e-15, 8.4703295e-22, 1, -4.4834175, 4.7683716e-07, 0)
 shape = SubResource("ConvexPolygonShape3D_272bh")
-
-[node name="tunnel" parent="." instance=ExtResource("6_7mycd")]
