@@ -43,6 +43,7 @@ points = PackedVector3Array(7.499999, 0, 250, -7.5, 0, 250, 7.499999, 0, -250, -
 script = ExtResource("1_272bh")
 
 [node name="tunnel" parent="." instance=ExtResource("6_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -121.00218, 0, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1bvp3")
@@ -73,6 +74,7 @@ script = ExtResource("2_1bvp3")
 metadata/_custom_type_script = "uid://lv3vos8jhhxl"
 
 [node name="Road_001" type="Node3D" parent="RoadManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -200.23444, 0, 0)
 script = ExtResource("3_lquwl")
 material_resource = ExtResource("4_lquwl")
 use_lowpoly_preview = true
