@@ -1,13 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://duy0dbkychify"]
+[gd_scene load_steps=7 format=3 uid="uid://duy0dbkychify"]
 
-[ext_resource type="Script" path="res://cars/BaseCar.gd" id="1_iqrfq"]
+[ext_resource type="Script" uid="uid://gdx1md7cl24u" path="res://cars/BaseCar.gd" id="1_iqrfq"]
 [ext_resource type="PackedScene" uid="uid://8sl5gmdd6o6w" path="res://cars/camera/camera_3d.tscn" id="2_5wm5h"]
+[ext_resource type="Shader" uid="uid://dtngnauunbewl" path="res://cars/Speed.gdshader" id="3_1lphw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mm2gk"]
 size = Vector3(1.9717, 1, 2.08592)
 
 [sub_resource type="LabelSettings" id="LabelSettings_yc8e5"]
 font_size = 32
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2kfrc"]
+shader = ExtResource("3_1lphw")
+shader_parameter/blur_strength = 0.0
 
 [node name="car" type="VehicleBody3D"]
 center_of_mass_mode = 1
@@ -62,13 +67,6 @@ suspension_max_force = 10000.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.689432, -0.062412)
 shape = SubResource("BoxShape3D_mm2gk")
 
-[node name="look" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2149, 0)
-
-[node name="Camera3D" parent="look" instance=ExtResource("2_5wm5h")]
-transform = Transform3D(1, 0, 0, 0, 0.974347, 0.225053, 0, -0.225053, 0.974347, 0, 1.97324, 6.19962)
-target_distance = 101
-
 [node name="Hud" type="CanvasLayer" parent="."]
 layer = 2
 
@@ -92,3 +90,22 @@ text = "Arow keys to drive
 Space to drift and break
 "
 label_settings = SubResource("LabelSettings_yc8e5")
+
+[node name="3DRig" type="Node3D" parent="."]
+
+[node name="look" type="Node3D" parent="3DRig"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2149, 0)
+
+[node name="Camera3D" parent="3DRig/look" instance=ExtResource("2_5wm5h")]
+transform = Transform3D(1, 0, 0, 0, 0.974347, 0.225053, 0, -0.225053, 0.974347, 0, 1.97324, 6.19962)
+target_distance = 101
+
+[node name="3DLayer" type="CanvasLayer" parent="3DRig"]
+
+[node name="Speed" type="ColorRect" parent="3DRig/3DLayer"]
+material = SubResource("ShaderMaterial_2kfrc")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
