@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://ci52bv1m15cbs"]
+[gd_scene load_steps=10 format=3 uid="uid://ci52bv1m15cbs"]
 
 [ext_resource type="PackedScene" uid="uid://duy0dbkychify" path="res://cars/BaseCar.tscn" id="1_cfkas"]
 [ext_resource type="PackedScene" uid="uid://benmjny2guowm" path="res://cars/Models/Doge/Wheel.glb" id="2_eoiid"]
 [ext_resource type="PackedScene" uid="uid://bty2rpvw2dh0h" path="res://cars/Models/Doge/doge-body.glb" id="3_om8jj"]
+[ext_resource type="Shader" uid="uid://dtngnauunbewl" path="res://cars/Speed.gdshader" id="4_1n2xg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yc8e5"]
 font_size = 32
@@ -15,6 +16,10 @@ size = Vector3(0.542114, 1.7092, 1.53265)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7kmqy"]
 radius = 0.363529
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y15c2"]
+shader = ExtResource("4_1n2xg")
+shader_parameter/blur_strength = 0.0
 
 [node name="car" instance=ExtResource("1_cfkas")]
 STEER_LIMIT = 0.4
@@ -105,5 +110,15 @@ shape = SubResource("CapsuleShape3D_7kmqy")
 [node name="TubroTimer" type="Timer" parent="." index="11"]
 wait_time = 5.0
 one_shot = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="12"]
+
+[node name="Speed" type="ColorRect" parent="CanvasLayer" index="0"]
+material = SubResource("ShaderMaterial_y15c2")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="timeout" from="TubroTimer" to="." method="_on_tubro_timer_timeout"]
