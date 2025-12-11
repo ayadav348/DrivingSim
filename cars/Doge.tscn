@@ -70,10 +70,19 @@ target_distance = 5
 speed = 10.0
 
 [node name="Label" parent="Hud" index="1"]
-text = "Arow keys to drive
+text = "Keyboard: 
+Arow keys to drive
 Space to drift and break
 Escape to Switch View
-"
+T for Turbo
+
+Wheel And Pedal
+Wheel to Steer
+Gas Pedal to Throttle
+Brake Pedal to Stop
+Clutch Pedal to Drift
+Downshift Paddle to Turbo
+Square to Switch View"
 
 [node name="TurboLabel" type="Label" parent="Hud" index="2"]
 visible = false
@@ -88,7 +97,7 @@ offset_right = 54.5
 offset_bottom = 46.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "TURBO
+text = "TURBO!
 "
 label_settings = SubResource("LabelSettings_yc8e5")
 
